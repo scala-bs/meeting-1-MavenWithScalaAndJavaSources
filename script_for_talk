@@ -1,0 +1,93 @@
+# maven projekt generieren
+mvn archetype:generate -DgroupId=org.simon.demo -DartifactId=meeting-1-MavenWithScalaAndJavaSources -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+# go into project folder
+cd meeting-1-MavenWithScalaAndJavaSources
+
+# create java class
+subl src/main/java/org/simon/demo/Person.java
+  # content
+  package org.simon.demo;
+
+  public class Person {
+    private String name;
+    public Person(String name) {
+      this.name = name;
+    }
+    public String getName() {
+      return name;
+    }
+  }
+
+# compile project
+mvn compile
+
+# install scala plugin
+  # edit pom.xml
+    subl pom.xml
+
+    # add to project:
+    <build>
+      <plugins>
+        <plugin>
+          <groupId>org.scala-tools</groupId>
+          <artifactId>maven-scala-plugin</artifactId>
+          <version>2.9</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>compile</goal>
+                <goal>testCompile</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </build>
+
+    <repositories>
+      <repository>
+        <id>scala</id>
+        <name>Scala Tools</name>
+        <url>http://scala-tools.org/repo-releases/</url>
+        <releases>
+          <enabled>true</enabled>
+        </releases>
+        <snapshots>
+          <enabled>false</enabled>
+        </snapshots>
+      </repository>
+    </repositories>
+
+    # add to dempendencies:
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-library</artifactId>
+      <version>2.11.2</version>
+    </dependency>
+
+  # create source folders
+  mkdir -p src/main/scala/org/simon/demo
+  mkdir -p src/test/scala/org/simon/demo
+
+  # run install script
+  mvn install
+
+# edit new file
+subl src/main/scala/org/simon/demo/ScalaApp.scala
+
+  # code hello world
+  package org.simon.demo;
+
+  object ScalaApp {
+    def main(args: Array[String]): Unit = {
+      var person: Person = new Person("Jane");
+      System.out.println("Hello " + person.getName());
+    }
+  }
+
+# compile project
+mvn compile
+
+# run scala app
+mvn exec:java -Dexec.mainClass="org.simon.demo.ScalaApp"
