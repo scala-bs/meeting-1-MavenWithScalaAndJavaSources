@@ -4,7 +4,7 @@ mvn archetype:generate -DgroupId=org.simon.demo -DartifactId=meeting-1-MavenWith
 # go into project folder
 cd meeting-1-MavenWithScalaAndJavaSources
 
-# create java class
+# create Person class in Java
 subl src/main/java/org/simon/demo/Person.java
   # content
   package org.simon.demo;
@@ -73,10 +73,10 @@ mvn compile
   # run install script
   mvn install
 
-# edit new file
+# create demo app in Scala
 subl src/main/scala/org/simon/demo/ScalaApp.scala
 
-  # code hello world
+  # content
   package org.simon.demo;
 
   object ScalaApp {
