@@ -1,4 +1,4 @@
-# maven projekt generieren
+# generate maven project
 mvn archetype:generate -DgroupId=org.simon.demo -DartifactId=meeting-1-MavenWithScalaAndJavaSources -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 
 # go into project folder
