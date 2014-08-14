@@ -7,17 +7,19 @@ cd meeting-1-MavenWithScalaAndJavaSources
 # create Person class in Java
 subl src/main/java/org/simon/demo/Person.java
   # content
-  package org.simon.demo;
+  
+package org.simon.demo;
 
-  public class Person {
-    private String name;
-    public Person(String name) {
-      this.name = name;
-    }
-    public String getName() {
-      return name;
-    }
+public class Person {
+  private String name;
+  public Person(String name) {
+    this.name = name;
   }
+  public String getName() {
+    return name;
+  }
+}
+
 
 # compile project
 mvn compile
@@ -77,14 +79,15 @@ mvn compile
 subl src/main/scala/org/simon/demo/ScalaApp.scala
 
   # content
-  package org.simon.demo;
+  
+package org.simon.demo;
 
-  object ScalaApp {
-    def main(args: Array[String]): Unit = {
-      var person: Person = new Person("Jane");
-      System.out.println("Hello " + person.getName());
-    }
+object ScalaApp {
+  def main(args: Array[String]): Unit = {
+    var person: Person = new Person("Jane");
+    System.out.println("Hello " + person.getName());
   }
+}
 
 # compile project
 mvn compile
